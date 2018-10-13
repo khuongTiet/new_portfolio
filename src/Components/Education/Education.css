@@ -1,0 +1,22 @@
+.educationContainer {
+  height: 100vh;
+  font-size: 4rem;
+}
+
+.splitContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.educationContainerTop {
+  background: black;
+  color: white;
+  height: 50%;
+}
+
+.educationContainerBottom {
+  background: white;
+  color: black;
+  height: 50%;
+}

@@ -1,0 +1,11 @@
+.introductionContainer {
+  height: 200vh;
+  width: 62vw;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 3rem;
+}
