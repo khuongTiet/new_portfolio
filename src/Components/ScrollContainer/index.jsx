@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./ScrollContainer.css";
+import profile from "../../img/profile.jpg";
 
 const BusinessCard = props => {
   const { currentScrollPosition, windowHeight } = props;
@@ -9,21 +10,66 @@ const BusinessCard = props => {
       style={{
         top: `${windowHeight -
           windowHeight *
-            ((currentScrollPosition % windowHeight) / windowHeight)}px`
+            ((currentScrollPosition % windowHeight) / windowHeight) +
+          window.innerHeight * 0.025}px`
       }}
     >
       <div
         style={{
           width: "100%",
-          display: "flex"
+          display: "flex",
+          alignItems: "center"
         }}
       >
-        <div style={{ width: "100%" }}>
-          <div>A</div>
-          <div>B</div>
+        <div
+          style={{
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            borderRight: "0.0625rem solid lightgray"
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <a href="#" target="_blank">
+              <img style={{ height: "14rem" }} src={profile} />
+            </a>
+          </div>
         </div>
-        <div style={{ width: "40%" }}>
-          <div>C</div>
+        <div
+          style={{
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-evenly"
+          }}
+        >
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <div style={{ fontSize: "2rem", fontWeight: 600 }}>Khuong Tiet</div>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <div>657.238.9178</div>
+            <div>ktiet1 at uci dot edu</div>
+            <div>LinkedIn</div>
+          </div>
+          <div>Hello</div>
         </div>
       </div>
     </div>
@@ -84,6 +130,7 @@ export default class ScrollContainer extends Component {
       if (index === scrollIndex || index === scrollIndex + 1) {
         return React.cloneElement(child, {
           display: index === scrollIndex,
+          zIndex: index === scrollIndex ? 2 : 1,
           blurAmount: index === scrollIndex ? 1 - blur : this.rampScroll(blur)
         });
       }
@@ -93,8 +140,8 @@ export default class ScrollContainer extends Component {
   render() {
     const { currentScrollPosition, heightMultiplier, scrollIndex } = this.state;
     const { children } = this.props;
-    console.log(currentScrollPosition);
-    console.log(heightMultiplier * window.innerHeight);
+    console.log("A", currentScrollPosition);
+    console.log("B", heightMultiplier * window.innerHeight);
 
     return (
       <div
@@ -107,7 +154,8 @@ export default class ScrollContainer extends Component {
         <div className="displayContainer">
           {this.scrollPositionProps(children)}
         </div>
-        {scrollIndex === children.length - 1 && (
+        {currentScrollPosition >=
+          heightMultiplier * window.innerHeight - window.innerHeight * 0.8 && (
           <BusinessCard
             currentScrollPosition={currentScrollPosition}
             windowHeight={window.innerHeight}

@@ -26,9 +26,15 @@
   display: flex;
   flex-direction: "column";
   justify-content: space-evenly;
-  height: 60vh;
-  width: 76vw;
+  height: 56vh;
+  width: 62vw;
   border-radius: 1rem;
   position: fixed;
   background: white;
+}
+
+.businessCardLine {
+  border-left: 0.0625rem solid silver;
+  height: 80%;
+  width: 12vw;
 }
