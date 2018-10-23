@@ -42,7 +42,8 @@ const BusinessCard = props => {
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-evenly"
+            justifyContent: "space-evenly",
+            textShadow: "none"
           }}
         >
           <div
@@ -67,9 +68,19 @@ const BusinessCard = props => {
           >
             <div>657.238.9178</div>
             <div>ktiet1 at uci dot edu</div>
-            <div>LinkedIn</div>
+            <a
+              href="https://github.com/khuongTiet"
+              style={{ textDecoration: "none" }}
+            >
+              GitHub
+            </a>
+            <a
+              href="https://linkedin./com/khuong-tiet"
+              style={{ textDecoration: "none" }}
+            >
+              LinkedIn
+            </a>
           </div>
-          <div>Hello</div>
         </div>
       </div>
     </div>
@@ -103,7 +114,7 @@ export default class ScrollContainer extends Component {
     const { windowHeight } = this.state;
     const {
       srcElement: {
-        body: { scrollTop }
+        scrollingElement: { scrollTop }
       }
     } = e;
     const scrollPosition = scrollTop < 0 ? 0 : scrollTop;
@@ -140,8 +151,6 @@ export default class ScrollContainer extends Component {
   render() {
     const { currentScrollPosition, heightMultiplier, scrollIndex } = this.state;
     const { children } = this.props;
-    console.log("A", currentScrollPosition);
-    console.log("B", heightMultiplier * window.innerHeight);
 
     return (
       <div
